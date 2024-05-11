@@ -8,3 +8,5 @@ management.info.env.enabled=true
 info.app.name=My super app
 info.app.description= A crazy  fun app
 info.app.version=1.0.0  
+
+
