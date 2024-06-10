@@ -31,6 +31,15 @@ public class AppConfig {
     }
 }
 
+1. @Componentmarks a class as a Spring component.
+2. Classes annotated with @Component are automatically detected and registered as beans.
+3. @ComponentScan is used to specify the packages to scan for annotated components.
+4. @Autowired is used to inject the component into other beans
 
+The client sends an HTTP POST request to the /api/items endpoint with a JSON body.
+The @PostMapping("/items") annotation maps this request to the addItem method.
+The @RequestBody annotation tells Spring to deserialize the JSON body of the request into an Item object.
+The addItem method receives the Item object populated with the data from the request body, ready for further processing.
+Using @RequestBody with @PostMapping simplifies handling and processing of incoming data, ensuring a clean and efficient way to bind request data to Java objects.
 
 
