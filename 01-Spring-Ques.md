@@ -45,4 +45,49 @@ Using @RequestBody with @PostMapping simplifies handling and processing of incom
 @RequestBody 
 This is particularly useful when you're dealing with JSON or XML data in the request body that needs to be converted into a Java object. 
 
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class UserController {
+
+    @PostMapping("/users")
+    public String createUser(@RequestBody UserDto user) {
+        // Process the user data
+        return "User " + user.getUsername() + " with email " + user.getEmail() + " created successfully.";
+    }
+}
+
+
+
+@RequiredArgsConstructor in Spring Boot is a Lombok annotation that helps reduce boilerplate code by automatically generating constructors for required fields. It promotes constructor injection, which is a good practice in Spring applications for ensuring immutability and thread-safety. This leads to cleaner, more maintainable, and less error-prone code.
+
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+@Service
+@RequiredArgsConstructor
+public class MyService {
+
+    @NonNull
+    private MyRepository myRepository;
+    private final AnotherDependency anotherDependency;
+
+    // Other methods
+}
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+@Service
+@RequiredArgsConstructor
+public class MyService {
+
+    private final MyRepository myRepository;
+    private final AnotherDependency anotherDependency;
+
+    // Other methods
+}
 
