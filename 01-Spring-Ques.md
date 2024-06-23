@@ -91,3 +91,37 @@ public class MyService {
     // Other methods
 }
 
+
+Purpose: @PostConstruct
+ is used for initialization logic that should run once after the bean is created and dependencies are injected.
+Lifecycle: The method annotated with @PostConstruct will be executed once after the dependency injection is done.
+Use Cases: Commonly used for setting up resources, initializing data, or any other setup tasks required after the bean is fully initialized.
+By using @PostConstruct, you can ensure that your initialization logic runs at the right time in the bean's lifecycle, making your Spring application more robust and easier to maintain.
+
+The @PostConstruct annotation in Spring is used to annotate a method that should be executed after the dependency injection is done to perform any initialization. This method will be invoked only once, after the bean's properties have been set.
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import javax.annotation.PostConstruct;
+import java.util.Arrays;
+
+@Service
+public class DataInitializer {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @PostConstruct
+    public void init() {
+        // Check if the database is empty
+        if (userRepository.count() == 0) {
+            // Load initial data
+            userRepository.saveAll(Arrays.asList(
+                new User("john.doe@example.com", "John", "Doe"),
+                new User("jane.doe@example.com", "Jane", "Doe")
+            ));
+        }
+    }
+}
+
+
