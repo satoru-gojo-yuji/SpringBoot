@@ -124,4 +124,13 @@ public class DataInitializer {
     }
 }
 
+  @Configuration 
+  annotation is used to indicate that a class declares one or more @Bean methods and may be processed by the Spring container to generate bean definitions and service requests at runtime.
+
+Key Points about @Configuration
+Bean Definitions: A class annotated with @Configuration is a source of bean definitions. It can define beans using methods annotated with @Bean.
+Singleton Scope: Beans defined in a @Configuration class are by default singletons, ensuring that only one instance of each bean is created and managed by the Spring container.
+Class-Level Configuration: It is a way to define configurations at the class level, which can be processed by Spring's container.
+ProxyEnhancements: By default, Spring will use CGLIB to create a subclass of the @Configuration class to intercept calls to @Bean methods and manage them within the Spring context.
+
 
