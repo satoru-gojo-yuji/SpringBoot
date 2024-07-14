@@ -59,6 +59,9 @@ public class UserController {
     }
 }
 
+@ResponseBody: This annotation tells Spring to convert the return value of the method to JSON and write it directly to the HTTP response body, using message converters.
+
+
 
 
 @RequiredArgsConstructor in Spring Boot is a Lombok annotation that helps reduce boilerplate code by automatically generating constructors for required fields. It promotes constructor injection, which is a good practice in Spring applications for ensuring immutability and thread-safety. This leads to cleaner, more maintainable, and less error-prone code.
