@@ -137,3 +137,40 @@ Class-Level Configuration: It is a way to define configurations at the class lev
 ProxyEnhancements: By default, Spring will use CGLIB to create a subclass of the @Configuration class to intercept calls to @Bean methods and manage them within the Spring context.
 
 
+@Param : 
+In Spring Framework, @Param (org.springframework.data.repository.query.Param) is used to bind the method parameter to Query parameter.
+
+Example:
+
+@Query("select e from Employee e where e.deptId = :deptId")
+List<Employee> findEmployeeByDeptId(@Param("deptId") Long departmentId);
+Here, Employee is JPA Entity, and @Param is used to bind the method parameter departmentId to Query parameter deptId.
+
+In your case, you are trying to fetch URL Parameter value. @RequestParam need to be used. @RequestParam is used to bind method parameter to web URL request parameter.
+
+
+What is @RequestParam?
+The @RequestParam annotation in Spring MVC is used to extract query parameters from the request URL. Query parameters are typically appended to the URL after a question mark (?) and separated by ampersands (&). For example, in the URL http://example.com/api/products?id=123&name=Laptop, id and name are query parameters.
+
+Usage of @RequestParam:
+@GetMapping("/products")
+public ResponseEntity<Product> getProductById(
+    @RequestParam Long id,
+    @RequestParam(required = false) String name
+) {
+    // Method logic to retrieve product details
+}
+In the above example, id and name are extracted from the query parameters of the request URL. The required attribute of @RequestParam can be set to false to make a parameter optional.
+
+
+What is @PathVariable?
+On the other hand, the @PathVariable annotation is used to extract values from URI templates. URI templates are parts of the URL path enclosed in curly braces ({}). For instance, in the URL pattern /products/{id}, id is a path variable.
+
+Usage of @PathVariable:
+@GetMapping("/products/{id}")
+public ResponseEntity<Product> getProductById(@PathVariable Long id) {
+    // Method logic to retrieve product details based on ID
+}
+Here, id is extracted from the URL path and used to fetch the corresponding product information.
+
+
